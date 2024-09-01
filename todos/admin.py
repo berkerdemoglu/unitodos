@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from todos.models import (
+	Module, LectureTodo
+	)
+
+# Register the models
+admin.site.register(Module)
+admin.site.register(LectureTodo)
