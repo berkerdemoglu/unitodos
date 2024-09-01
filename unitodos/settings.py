@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Program apps
+    'pages',
     'todos',
 
     'django.contrib.admin',
