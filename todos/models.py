@@ -1,17 +1,19 @@
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Module(models.Model):
     name = models.CharField(max_length=120)
     code = models.CharField(max_length=40, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         if self.code == '':
             return self.name
-        else:
-            return f'{self.code}: {self.name}'
+        return f'{self.code}: {self.name}'
 
     class Meta:
         unique_together = ['id', 'owner']
@@ -20,7 +22,10 @@ class Module(models.Model):
 class BaseTodo(models.Model):
     is_done = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE
+    )
 
     class Meta:
         abstract = True

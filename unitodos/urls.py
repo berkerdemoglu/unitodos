@@ -25,6 +25,9 @@ from pages.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # users app
+    path('account/', include(('users.urls', 'users'), namespace='users')),
+
     # pages app
     path('', include(('pages.urls', 'pages'), namespace='pages')),
 
