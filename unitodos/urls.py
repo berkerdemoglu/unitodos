@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from pages.views import (
+    bad_request_view, permission_denied_view
+    )
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -26,3 +31,7 @@ urlpatterns = [
     # todos app
     path('todos', include(('todos.urls', 'todos'), namespace='todos')),
 ]
+
+# Error views
+handler404 = bad_request_view
+handler403 = permission_denied_view
