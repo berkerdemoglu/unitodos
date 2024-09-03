@@ -25,9 +25,10 @@
 			</form>
 			{% else %}
       <h3><a href="{% url 'users:login' %}">Log in</a></h3>
+      <h3><a href="{% url 'users:signup' %}">Sign up</a></h3>
 			{% endif %}
 		</div>
-		<div id="class-div">
+		<div id="content-div">
 			{% block content %}
 			{% endblock content %}
 		</div>

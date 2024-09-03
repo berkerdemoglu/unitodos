@@ -1,0 +1,20 @@
+{% extends "pages/base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}Sign up{% endblock title %}
+
+{% block header %}
+  <h1>Sign up here</h1>
+{% endblock header %}
+
+{% block content %}
+
+<form method="post" action="{% url 'users:signup' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button name="submit">Sign up</button>
+  {% endbuttons %}
+</form>
+
+{% endblock content %}
