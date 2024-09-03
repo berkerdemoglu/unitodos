@@ -1,0 +1,10 @@
+{% extends "pages/base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}Successfully logged out{% endblock title %}
+
+{% block content %}
+<p>Logged out</p>
+<p>Click to go back to the <a href="{% url 'pages:index' %}">Home Page</a></p>
+
+{% endblock content %}

@@ -133,6 +133,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
 
+# Login urls
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'pages:index'
+
 
 # University list
 UNIVERSITIES = [

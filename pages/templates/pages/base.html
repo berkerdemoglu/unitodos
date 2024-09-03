@@ -1,1 +1,35 @@
+{% load static %}
+{% load bootstrap4 %}
 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock title %}</title>
+		<!-- TODO: favicon and project's own css files here -->
+
+		{% bootstrap_css %}
+		{% bootstrap_javascript jquery='full' %}
+	</head>
+	<body>
+		<div id="header-div">
+			{% block header %}
+			{% endblock header %}
+
+			{% if user.is_authenticated %}
+			<form method="post" action="{% url 'users:logout' %}">
+			    {% csrf_token %}
+			    {% buttons %}
+			    	<button type="submit">Log out</button>
+			    {% endbuttons %}
+			</form>
+			{% else %}
+      <h3><a href="{% url 'users:login' %}">Log in</a></h3>
+			{% endif %}
+		</div>
+		<div id="class-div">
+			{% block content %}
+			{% endblock content %}
+		</div>
+	</body>
+</html>
