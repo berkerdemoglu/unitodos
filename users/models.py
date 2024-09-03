@@ -13,7 +13,12 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True
     )
-    university = models.CharField(max_length=80, choices=settings.UNIVERSITIES)
+    university = models.CharField(
+        max_length=80,
+        choices=settings.UNIVERSITIES,
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return f'Profile of {self.owner}'
