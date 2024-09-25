@@ -1,4 +1,3 @@
-{% load static %}
 {% load bootstrap4 %}
 
 <!DOCTYPE html>
@@ -6,31 +5,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{% block title %}{% endblock title %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- TODO: favicon and project's own css files here -->
 
 		{% bootstrap_css %}
-		{% bootstrap_javascript jquery='full' %}
+    {% block head %}
+    {% endblock head %}
 	</head>
 	<body>
+    {% block navbar %}
+    {% endblock navbar %}
+
 		<div id="header-div">
 			{% block header %}
 			{% endblock header %}
-
-			{% if user.is_authenticated %}
-			<form method="post" action="{% url 'users:logout' %}">
-			    {% csrf_token %}
-			    {% buttons %}
-			    	<button type="submit">Log out</button>
-			    {% endbuttons %}
-			</form>
-			{% else %}
-      <h3><a href="{% url 'users:login' %}">Log in</a></h3>
-      <h3><a href="{% url 'users:signup' %}">Sign up</a></h3>
-			{% endif %}
 		</div>
 		<div id="content-div">
 			{% block content %}
 			{% endblock content %}
 		</div>
+
+    <!-- Scripts and JQuery (for Bootstrap) -->
+		{% bootstrap_javascript jquery='full' %}
+    {% block scripts %}
+    {% endblock scripts %}
 	</body>
 </html>

@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include(('pages.urls', 'pages'), namespace='pages')),
 
     # todos app
-    path('todos', include(('todos.urls', 'todos'), namespace='todos')),
+    path('todos/', include(('todos.urls', 'todos'), namespace='todos')),
 ]
 
 # Error views

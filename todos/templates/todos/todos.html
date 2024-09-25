@@ -1,0 +1,51 @@
+{% extends "pages/navbar.html" %}
+{% load bootstrap4 %}
+
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+.todo-text {
+  font-size: 1.5em;
+}
+</style>
+{% endblock head %}
+
+
+{% block title %}All Todos{% endblock title %}
+
+
+{% block header %}
+<h1>All Todos</h1>
+{% endblock header %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+      <div class="card">
+        <div class="card-header">
+          <span class="font-weight-bold">Lecture Todos</span>
+        </div>
+
+  			<ul class="list-group list-group-flush">
+  				{% for todo in lecture_todos %}
+            {% if forloop.counter0|divisibleby:2 %}
+  					<li class="list-group-item list-group-item-light">
+            {% else %}
+            <li class="list-group-item list-group-item-dark">
+            {% endif %}
+              <i class="fa fa-2x fa-square-o p-1"></i>
+              <span class="todo-text container-fluid d-inline ml-3">{{ todo }}</span>
+            </li>
+  				{% endfor %}
+  			</ul>
+      </div>
+		</div>
+		<div class="col">
+			<!-- Empty for now, different todo list here -->
+		</div>
+	</div>
+</div>
+{% endblock content %}
